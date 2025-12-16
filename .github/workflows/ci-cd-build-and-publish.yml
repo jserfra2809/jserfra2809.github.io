@@ -77,12 +77,13 @@ jobs:
             fi
           fi
 
-      - name: Commit and push changes to main (if any)
+      - name: Auto-commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "ci: update site with build info ${{ env.BUILD_TS }} (${{ env.BUILD_SHA }})"
+          commit_message: "ci: update site"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          commit_author: "jserfra2809 <jserfra2809@users.noreply.github.com>"
           file_pattern: "index.html"
-          branch: main
-          author_name: github-actions[bot]
-          author_email: 41898282+github-actions[bot]@users.noreply.github.com
+          push_options: "--force"
           # By default this action uses GITHUB_TOKEN so it won't re-trigger this workflow
